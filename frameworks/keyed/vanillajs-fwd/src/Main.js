@@ -1,4 +1,4 @@
-import {el} from "../node_modules/@fullwebdev/helpers/index.js";
+import {el} from "../node_modules/@fullweb/helpers/index.js";
 
 function _random(max) {
     return Math.round(Math.random()*1000)%max;
@@ -176,7 +176,7 @@ class Main {
     update() {
         this.store.update();
         for (let i=0;i<this.data.length;i+=10) {
-            this.rows[i].childNodes[1].childNodes[0].innerText = this.store.data[i].label;
+            this.rows[i].setLabel(this.store.data[i].label);
         }
     }
     unselect() {
@@ -293,17 +293,19 @@ class Main {
         // ... than adding directly
         var rows = this.rows, s_data = this.store.data, data = this.data, tbody = this.tbody;
         for(let i=rows.length;i<s_data.length; i++) {
-            let tr = this.createRow(s_data[i]);
-            rows[i] = tr;
+            let row = this.createRow(s_data[i]);
+            rows[i] = row;
             data[i] = s_data[i];
-            tbody.appendChild(tr);
+            // test using append instead
+            tbody.appendChild(row);
         }
     }
     createRow(data) {
+        let anchor;
         const tr = el('tr', {}, [
             el('td', {className: 'col-md-1'}, [data.id]),
-            el('td', { className: 'col-md-4'}, [
-                el('a', {className: 'lbl'}, [data.label])
+            el('td', {className: 'col-md-4'}, [
+                anchor = el('a', {className: 'lbl'}, [data.label])
             ]),
             el('td', {className: 'col-md-1'}, [
                 el('a', {className: 'remove'}, [
@@ -315,7 +317,11 @@ class Main {
             ]),
             el('td', {className: 'col-md-6'})
         ])
+        // test using local eventHandlers
         tr.data_id = data.id;
+        tr.setLabel = (label) => {
+            anchor.innerText = label;
+        };
         return tr;
     }
 }
