@@ -33,10 +33,12 @@ npm install
 
 Make sure all benchmarks are run in the same exact context. For that, we recommend to restart your computer and to only run the following commands.
 
-```bash
-npm start
-npm run bench-all # OR (for just one implementation) npm run bench keyed/<project-name>
+1. Run the HTTP server: `npm start`
+2. (in `webdriver-ts`) run some benchmarks
+   - all: `npm run bench`
+   - just one: `npm run bench (keyed|non-keyed)/<project-name>`
+   - all VanillaJS: `npm run bench -- --framework vanillajs`
+
 open http://localhost:8080/webdriver-ts-results/table.html
-```
 
 Go check [How to get started](https://github.com/krausest/js-framework-benchmark#how-to-get-started---building-and-running) for more information.
