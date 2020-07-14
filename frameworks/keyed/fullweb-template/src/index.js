@@ -1,18 +1,18 @@
-import {template, textPart} from "../node_modules/@fullweb/helpers/index.js";
+import {Template, part} from "../node_modules/@fullweb/helpers/index.js";
 
 function _random(max) {
     return Math.round(Math.random()*1000)%max;
 }
 
-const rowTemplate = template('tr', {}, [
-  ['td', {className: 'col-md-1'}, [textPart('id')]],
-  ['td', {className: 'col-md-4'}, [
-      ['a', {className: 'lbl'}, [textPart('label')]]
+const rowTemplate = new Template('tr', { classList: [["danger", part('selected')]]}, [
+  ['td', {classList: 'col-md-1'}, [part('id')]],
+  ['td', {classList: 'col-md-4'}, [
+      ['a', {classList: 'lbl'}, [part('label')]]
   ]],
-  ['td', {className: 'col-md-1'}, [
-      ['a', {className: 'remove'}, [
+  ['td', {classList: 'col-md-1'}, [
+      ['a', {classList: 'remove'}, [
           ['span', {
-              className: 'remove glyphicon glyphicon-remove',
+              classList: 'remove glyphicon glyphicon-remove',
               attributes: [['aria-hidden', 'true']]
           }]
       ]]
@@ -192,7 +192,7 @@ class Main {
     update() {
         this.store.update();
         for (let i=0;i<this.data.length;i+=10) {
-            this.rows[i].parts.label = this.store.data[i].label;
+            this.rows[i].state.label = this.store.data[i].label;
         }
     }
     unselect() {
@@ -205,7 +205,7 @@ class Main {
         this.unselect();
         this.store.select(this.data[idx].id);
         this.selectedRow = this.rows[idx];
-        this.selectedRow.className = "danger";
+        this.selectedRow.state.selected = true;
     }
     recreateSelection() {
         let old_selection = this.store.selected;
@@ -318,7 +318,7 @@ class Main {
     }
     createRow(data) {
         //#region create-row
-        const tr = rowTemplate.render(data);
+        const tr = rowTemplate.render({ ...data, selected: false });
         //#endregion create-row
         // test using local eventHandlers
         tr.data_id = data.id;

@@ -1,18 +1,18 @@
 {
   "name": "js-framework-benchmark-fullweb-helpers",
-  "version": "1.1.1",
-  "description": "Vanilla.JS demo",
+  "version": "1.0.0",
+  "description": "FullWeb demo using the el helper",
   "main": "index.js",
   "js-framework-benchmark": {
-    "frameworkVersion": ""
+    "frameworkVersionFromPackage": "@fullweb/helpers"
   },
   "scripts": {
-    "build-dev": "exit 0",
-    "build-prod": "exit 0"
+    "build-dev": "rollup -c -w",
+    "build-prod": "rollup -c"
   },
   "keywords": [
-    "react",
-    "webpack"
+    "fullweb",
+    "helpers"
   ],
   "author": "Noël Macé",
   "license": "Apache-2.0",
@@ -22,6 +22,10 @@
     "url": "https://github.com/krausest/js-framework-benchmark.git"
   },
   "dependencies": {
-    "@fullweb/helpers": "0.1.0-alpha.2"
+    "@fullweb/helpers": "0.1.0"
+  },
+  "devDependencies": {
+    "rollup": "1.12.3",
+    "rollup-plugin-terser": "5.0.0"
   }
 }
