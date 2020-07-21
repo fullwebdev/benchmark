@@ -4,6 +4,7 @@ function _random(max) {
     return Math.round(Math.random()*1000)%max;
 }
 
+//#region template
 const rowTemplate = new Template('tr', { classList: [["danger", part('selected')]]}, [
   ['td', {classList: 'col-md-1'}, [part('id')]],
   ['td', {classList: 'col-md-4'}, [
@@ -19,6 +20,7 @@ const rowTemplate = new Template('tr', { classList: [["danger", part('selected')
   ]],
   ['td', {className: 'col-md-6'}]
 ]);
+//#endregion template
 
 class Store {
     constructor() {
