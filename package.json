@@ -1,5 +1,5 @@
 {
-  "name": "js-framework-benchmark",
+  "name": "@fullweb/benchmark",
   "version": "1.0.0",
   "description": "Simple Benchmark for Javascript client side rendering",
   "scripts": {
