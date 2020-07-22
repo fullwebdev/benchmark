@@ -190,12 +190,14 @@ class Main {
         this.store.add();
         this.appendRows();
     }
+    //#region update
     update() {
         this.store.update();
         for (let i=0;i<this.data.length;i+=10) {
             this.rows[i].childNodes[1].childNodes[0].innerText = this.store.data[i].label;
         }
     }
+    //#endregion update
     unselect() {
         if (this.selectedRow !== undefined) {
             this.selectedRow.className = "";
