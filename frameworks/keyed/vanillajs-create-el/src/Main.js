@@ -173,14 +173,14 @@ class Main {
         this.store.add();
         this.appendRows();
     }
+    //#region update
     update() {
-        this.store.update();
-        for (let i=0;i<this.data.length;i+=10) {
-            //#region update
-            this.rows[i].childNodes[1].childNodes[0].innerText = this.store.data[i].label;
-            //#endregion update
-        }
+      this.store.update();
+      for (let i=0;i<this.data.length;i+=10) {
+        this.rows[i].childNodes[1].childNodes[0].innerText = this.store.data[i].label;
+      }
     }
+    //#endregion update
     unselect() {
         if (this.selectedRow !== undefined) {
             this.selectedRow.className = "";
@@ -301,37 +301,37 @@ class Main {
             tbody.appendChild(tr);
         }
     }
+    //#region create-row
     createRow(data) {
-        //#region create-row
-        const tr = document.createElement('tr');
-        const tds = [ '', '', '', '' ].map(() => document.createElement('td'));
+      const tr = document.createElement('tr');
+      const tds = [ '', '', '', '' ].map(() => document.createElement('td'));
 
-        tds[0].classList.add('col-md-1');
-        tds[0].textContent = data.id;
+      tds[0].classList.add('col-md-1');
+      tds[0].textContent = data.id;
 
-        tds[1].classList.add('col-md-4');
-        const a2 = document.createElement('a');
-        a2.classList.add('lbl');
-        a2.textContent = data.label;
-        tds[1].appendChild(a2);
+      tds[1].classList.add('col-md-4');
+      const a2 = document.createElement('a');
+      a2.classList.add('lbl');
+      a2.textContent = data.label;
+      tds[1].appendChild(a2);
 
-        tds[2].classList.add('col-md-1');
-        const a3 = document.createElement('a');
-        a3.classList.add('remove');
-        const a3Span = document.createElement('span');
-        a3Span.classList.add('remove', 'glyphicon', 'glyphicon-remove');
-        a3Span.setAttribute('aria-hidden', 'true');
-        a3.appendChild(a3Span);
-        tds[2].appendChild(a3);
+      tds[2].classList.add('col-md-1');
+      const a3 = document.createElement('a');
+      a3.classList.add('remove');
+      const a3Span = document.createElement('span');
+      a3Span.classList.add('remove', 'glyphicon', 'glyphicon-remove');
+      a3Span.setAttribute('aria-hidden', 'true');
+      a3.appendChild(a3Span);
+      tds[2].appendChild(a3);
 
-        tds[3].classList.add('col-md-6');
+      tds[3].classList.add('col-md-6');
 
-        tr.append(...tds);
-        //#endregion create-row
-        tr.data_id = data.id;
+      tr.append(...tds);
+      tr.data_id = data.id;
 
-        return tr;
+      return tr;
     }
+    //#endregion create-row
 }
 
 new Main();

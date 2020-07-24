@@ -299,24 +299,23 @@ class Main {
             tbody.appendChild(tr);
         }
     }
+    //#region create-row
     createRow(data) {
-        //#region create-row
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td class='col-md-1'>${data.id}</td>
-            <td class='col-md-4'>
-                <a class='lbl'>${data.label}</a>
-            </td>
-            <td class='col-md-1'>
-                <a class='remove'><span class='remove glyphicon glyphicon-remove' aria-hidden='true'></span></a>
-            </td>
-            <td class='col-md-6'></td>
-        `;
-        //#endregion create-row
-        //.replace(/>\s+</g, "><");
-        tr.data_id = data.id;
-        return tr;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class='col-md-1'>${data.id}</td>
+        <td class='col-md-4'>
+            <a class='lbl'>${data.label}</a>
+        </td>
+        <td class='col-md-1'>
+            <a class='remove'><span class='remove glyphicon glyphicon-remove' aria-hidden='true'></span></a>
+        </td>
+        <td class='col-md-6'></td>
+      `;
+      tr.data_id = data.id;
+      return tr;
     }
+    //#endregion create-row
 }
 
 new Main();
