@@ -173,12 +173,14 @@ class Main {
         this.store.add();
         this.appendRows();
     }
+    //#region update
     update() {
         this.store.update();
         for (let i=0;i<this.data.length;i+=10) {
             this.rows[i].setLabel(this.store.data[i].label);
         }
     }
+    //#endregion update
     unselect() {
         if (this.selectedRow !== undefined) {
             this.selectedRow.className = "";
@@ -300,32 +302,31 @@ class Main {
             tbody.appendChild(row);
         }
     }
+    //#region create-row
     createRow(data) {
-        let anchor;
-        //#region create-row
-        const tr = el('tr', {}, [
-            el('td', {className: 'col-md-1'}, [data.id]),
-            el('td', {className: 'col-md-4'}, [
-                anchor = el('a', {className: 'lbl'}, [data.label])
-            ]),
-            el('td', {className: 'col-md-1'}, [
-                el('a', {className: 'remove'}, [
-                    el('span', {
-                        className: 'remove glyphicon glyphicon-remove',
-                        attributes: [['aria-hidden', 'true']]
-                    })
-                ])
-            ]),
-            el('td', {className: 'col-md-6'})
-        ])
-        tr.setLabel = (label) => {
-            anchor.innerText = label;
-        };
-        //#endregion create-row
-        // test using local eventHandlers
-        tr.data_id = data.id;
-        return tr;
+      let anchor;
+      const tr = el('tr', {}, [
+        el('td', {className: 'col-md-1'}, [data.id]),
+        el('td', {className: 'col-md-4'}, [
+          anchor = el('a', {className: 'lbl'}, [data.label])
+        ]),
+        el('td', {className: 'col-md-1'}, [
+          el('a', {className: 'remove'}, [
+            el('span', {
+              className: 'remove glyphicon glyphicon-remove',
+              attributes: [['aria-hidden', 'true']]
+            })
+          ])
+        ]),
+        el('td', {className: 'col-md-6'})
+      ])
+      tr.setLabel = (label) => {
+        anchor.innerText = label;
+      };
+      tr.data_id = data.id;
+      return tr;
     }
+    //#endregion create-row
 }
 
 new Main();
