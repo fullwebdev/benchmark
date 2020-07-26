@@ -318,15 +318,15 @@ class Main {
             tbody.appendChild(tr);
         }
     }
+    //#region create-row
     createRow(data) {
-        //#region create-row
-        const tr = rowTemplate.cloneNode(true);
-        tr.firstChild.textContent = data.id;
-        tr.firstChild.nextSibling.firstChild.textContent = data.label;
-        //#endregion create-row
-        tr.data_id = data.id;
-        return tr;
+      const tr = rowTemplate.cloneNode(true);
+      tr.firstChild.textContent = data.id;
+      tr.firstChild.nextSibling.firstChild.textContent = data.label;
+      tr.data_id = data.id;
+      return tr;
     }
+    //#endregion create-row
 }
 
 new Main();
