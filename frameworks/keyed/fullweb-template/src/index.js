@@ -191,24 +191,28 @@ class Main {
         this.store.add();
         this.appendRows();
     }
+    //#region update
     update() {
         this.store.update();
         for (let i=0;i<this.data.length;i+=10) {
             this.rows[i].state.label = this.store.data[i].label;
         }
     }
+    //#endregion update
     unselect() {
         if (this.selectedRow !== undefined) {
             this.selectedRow.className = "";
             this.selectedRow = undefined;
         }
     }
+    //#region select
     select(idx) {
         this.unselect();
         this.store.select(this.data[idx].id);
         this.selectedRow = this.rows[idx];
         this.selectedRow.state.selected = true;
     }
+    //#endregion select
     recreateSelection() {
         let old_selection = this.store.selected;
         let sel_idx = this.store.data.findIndex(d => d.id === old_selection);
