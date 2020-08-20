@@ -12,6 +12,6 @@
     "alwaysStrict": true,
     "esModuleInterop": true
   },
-  "include": ["src/**/*.js", "node_modules/@fullwebdev/**/*.js"],
-  "exclude": ["node_modules/!(@fullwebdev)"]
+  "include": ["src/**/*.js", "node_modules/modern-helpers/**/*.js"],
+  "exclude": ["node_modules/!(modern-helpers)"]
 }
