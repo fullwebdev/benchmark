@@ -1,10 +1,10 @@
 {
-  "name": "js-framework-benchmark-fullweb-helpers-dx",
+  "name": "js-framework-benchmark-modern-helpers-dx",
   "version": "1.0.0",
-  "description": "FullWeb demo using the el helper",
+  "description": "modern-helpers demo using the el helper",
   "main": "index.js",
   "js-framework-benchmark": {
-    "frameworkVersionFromPackage": "@fullweb/helpers",
+    "frameworkVersionFromPackage": "modern-helpers",
     "issues": [
       772
     ]
@@ -25,7 +25,7 @@
     "url": "https://github.com/krausest/js-framework-benchmark.git"
   },
   "dependencies": {
-    "@fullweb/helpers": "0.1.0"
+    "modern-helpers": "0.1.0"
   },
   "devDependencies": {
     "rollup": "1.12.3",

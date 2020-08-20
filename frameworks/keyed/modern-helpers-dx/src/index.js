@@ -1,4 +1,4 @@
-import { el } from '../node_modules/@fullweb/helpers/index.js';
+import { el } from '../node_modules/modern-helpers/el/index.js';
 import { Store } from './store.js';
 import { getParentId } from './utils.js';
 
