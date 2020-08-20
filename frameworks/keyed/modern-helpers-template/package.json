@@ -1,19 +1,21 @@
 {
-  "name": "js-framework-benchmark-fullweb-helpers",
+  "name": "js-framework-benchmark-modern-helpers-template",
   "version": "1.0.0",
-  "description": "FullWeb demo using the el helper",
+  "description": "modern-helpers demo using the template helper",
   "main": "index.js",
   "js-framework-benchmark": {
-    "frameworkVersionFromPackage": "@fullweb/helpers",
-    "issues": [772]
+    "frameworkVersionFromPackage": "@modern-helpers/template",
+    "issues": [
+      772
+    ]
   },
   "scripts": {
     "build-dev": "rollup -c -w",
     "build-prod": "rollup -c"
   },
   "keywords": [
-    "fullweb",
-    "helpers"
+    "react",
+    "webpack"
   ],
   "author": "Noël Macé",
   "license": "Apache-2.0",
@@ -23,7 +25,7 @@
     "url": "https://github.com/krausest/js-framework-benchmark.git"
   },
   "dependencies": {
-    "@fullweb/helpers": "0.1.0"
+    "@modern-helpers/template": "0.1.0"
   },
   "devDependencies": {
     "rollup": "1.12.3",

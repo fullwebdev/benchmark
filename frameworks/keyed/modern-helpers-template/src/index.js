@@ -1,4 +1,4 @@
-import {Template, part} from "../node_modules/@fullweb/helpers/index.js";
+import {Template, part} from "../node_modules/@modern-helpers/template/index.js";
 
 function _random(max) {
     return Math.round(Math.random()*1000)%max;

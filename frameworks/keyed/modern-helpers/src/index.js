@@ -1,4 +1,4 @@
-import {el} from "../node_modules/@fullweb/helpers/index.js";
+import {el} from "../node_modules/@modern-helpers/el/index.js";
 
 function _random(max) {
     return Math.round(Math.random()*1000)%max;
