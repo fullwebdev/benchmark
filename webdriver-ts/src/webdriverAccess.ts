@@ -55,7 +55,7 @@ export async function findByXPath(driver: WebDriver, path: string): Promise<WebE
             let elem;
             if (useRowShadowRoot && p.tagName === 'tr') {
                 try {
-                    const shadowHost = await shadowRoot(driver, `benchmark-row:nth-child(${p.index})`);
+                    const shadowHost = await shadowRoot(driver, `benchmark-row:nth-of-type(${p.index})`);
                     elem = await shadowHost.findElement(By.tagName('tr'));
                     if (elem === null) {
                         return null;
@@ -64,7 +64,7 @@ export async function findByXPath(driver: WebDriver, path: string): Promise<WebE
                     return null;
                 }
             } else {
-                let elems = await n.findElements(By.css(p.tagName+":nth-child("+(p.index)+")"));
+                let elems = await n.findElements(By.css(p.tagName+":nth-of-type("+(p.index)+")"));
                 if (elems==null || elems.length==0) { return null};
                 elem = elems[0];
             }
@@ -242,6 +242,7 @@ export function buildDriver(benchmarkOptions: BenchmarkDriverOptions): WebDriver
         platform: 'ANY',
         version: 'stable',
         "goog:chromeOptions": {
+            binary: benchmarkOptions.chromeBinaryPath,
             args: args,
             "perfLoggingPrefs": {
                 "enableNetwork": true,
@@ -255,8 +256,10 @@ export function buildDriver(benchmarkOptions: BenchmarkDriverOptions): WebDriver
             "performance": "ALL"
         }
     });
+
     // port probing fails sometimes on windows, the following driver construction avoids probing:
-    let service = new chrome.ServiceBuilder().setPort(benchmarkOptions.chromePort).build();
+    let service = new chrome.ServiceBuilder()
+        .setPort(benchmarkOptions.chromePort).build();
     var driver = chrome.Driver.createSession(caps, service);
 
     return driver;

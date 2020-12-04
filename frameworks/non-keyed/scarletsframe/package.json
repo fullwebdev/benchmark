@@ -1,10 +1,11 @@
 {
   "name": "js-framework-benchmark-non-keyed-scarletsframe",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ScarletsFrame demo",
   "main": "index.js",
   "js-framework-benchmark": {
-    "frameworkVersionFromPackage": "scarletsframe"
+    "frameworkVersionFromPackage": "scarletsframe",
+    "issues": [800]
   },
   "scripts": {
     "build-dev": "webpack -w -d",
@@ -22,7 +23,7 @@
   },
   "dependencies": {
     "raw-loader": "4.0.0",
-    "scarletsframe": "0.28.7",
+    "scarletsframe": "0.29.4",
     "webpack": "4.29.2"
   },
   "devDependencies": {

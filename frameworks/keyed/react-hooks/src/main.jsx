@@ -42,7 +42,8 @@ function listReducer(state, action) {
     case 'CLEAR':
       return { data: [], selected: 0 };
     case 'SWAP_ROWS':
-      return { data: [data[0], data[998], ...data.slice(2, 998), data[1], data[999]], selected };
+      debugger;
+      return (data.length > 998) ? { data: [data[0], data[998], ...data.slice(2, 998), data[1], data[999]] } : state;
     case 'REMOVE':
       const idx = data.findIndex((d) => d.id === action.id);
       return { data: [...data.slice(0, idx), ...data.slice(idx + 1)], selected };
@@ -54,17 +55,14 @@ function listReducer(state, action) {
 
 const GlyphIcon = <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>;
 
-const Row = memo(({ selected, item, dispatch }) => {
-  const select = useCallback(() => dispatch({ type: 'SELECT', id: item.id }), [item.id]),
-    remove = useCallback(() => dispatch({ type: 'REMOVE', id: item.id }), [item.id]);
-
-  return (<tr className={selected ? "danger" : ""}>
+const Row = memo(({ selected, item, dispatch }) => (
+  <tr className={selected ? "danger" : ""}>
     <td className="col-md-1">{item.id}</td>
-    <td className="col-md-4"><a onClick={select}>{item.label}</a></td>
-    <td className="col-md-1"><a onClick={remove}>{GlyphIcon}</a></td>
+    <td className="col-md-4"><a onClick={() => dispatch({ type: 'SELECT', id: item.id })}>{item.label}</a></td>
+    <td className="col-md-1"><a onClick={() => dispatch({ type: 'REMOVE', id: item.id })}>{GlyphIcon}</a></td>
     <td className="col-md-6"></td>
-  </tr>);
-});
+  </tr>
+))
 
 const Button = ({ id, cb, title }) => (
   <div className="col-sm-6 smallpad">

@@ -37,10 +37,9 @@ export let config = {
     PORT: 8080,
     REMOTE_DEBUGGING_PORT: 9999,
     CHROME_PORT: 9998,
-    REPEAT_RUN: 10,
+    REPEAT_RUN: 12, // Currently we're dropping the two worst results for CPU benchmarks for REPEAT_RUN >= 10
     REPEAT_RUN_MEM: 1,
     REPEAT_RUN_STARTUP: 4,
-    DROP_WORST_RUN: 0,
     WARMUP_COUNT: 5,
     TIMEOUT: 60 * 1000,
     LOG_PROGRESS: true,
@@ -156,8 +155,18 @@ async function loadFrameworkInfo(pathInFrameworksDir: string): Promise<Framework
     } else {
         throw "pathInFrameworksDir must start with keyed or non-keyed, but is "+pathInFrameworksDir;
     }
-    let frameworksPath = path.resolve('..','frameworks');
-    let packageJSONPath = path.resolve(frameworksPath, pathInFrameworksDir, 'package.json');
+    const frameworkPath = path.resolve('..', 'frameworks', pathInFrameworksDir);
+    const packageJSONPath = path.resolve(frameworkPath, 'package.json');
+
+    const distDir = path.resolve(frameworkPath, 'dist');
+    if (fs.existsSync(distDir)) {
+        const files = fs.readdirSync(distDir);
+        const gzFiles = files.filter(file => path.extname(file).toLowerCase() === '.gz');
+        if (gzFiles.length > 0) {
+            return new FrameworkVersionInformationError(keyedType, directory, `Found gzipped files in "${pathInFrameworksDir}/dist".`);
+        }
+    }
+
     if (fs.existsSync(packageJSONPath)) {
         let packageJSON = JSON.parse(fs.readFileSync(packageJSONPath, 'utf8'));
         if (packageJSON['js-framework-benchmark']) {
