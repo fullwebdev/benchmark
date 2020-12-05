@@ -49,6 +49,7 @@ webdriver-ts/error-*.png
 webdriver-ts/log*
 webdriver-ts/.vscode/
 webdriver-ts/prefs
+webdriver-ts-results/BoxPlotTable.*.js
 results-ui/table.html
 results-ui/src/data.js
 marko-*/.cache
@@ -56,6 +57,7 @@ marko-*/static
 marko-*/build
 marko-*/src/xtable.marko
 **/hyperoop/.rpt2_cache
+**/mikado/src/template/**/*.es6.js
 
 # keep root yarn.lock in repo so that travis will install yarn
 yarn.lock
