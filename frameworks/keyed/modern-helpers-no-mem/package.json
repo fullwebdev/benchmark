@@ -1,0 +1,34 @@
+{
+  "name": "js-framework-benchmark-modern-helpers-no-mem",
+  "version": "1.0.0",
+  "description": "modern-helpers demo using the el helper",
+  "main": "index.js",
+  "js-framework-benchmark": {
+    "frameworkVersionFromPackage": "modern-helpers",
+    "issues": [
+      772
+    ]
+  },
+  "scripts": {
+    "build-dev": "rollup -c -w",
+    "build-prod": "rollup -c"
+  },
+  "keywords": [
+    "fullweb",
+    "helpers"
+  ],
+  "author": "Noël Macé",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/krausest/js-framework-benchmark",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krausest/js-framework-benchmark.git"
+  },
+  "dependencies": {
+    "modern-helpers": "0.1.0"
+  },
+  "devDependencies": {
+    "rollup": "1.12.3",
+    "rollup-plugin-terser": "5.0.0"
+  }
+}
