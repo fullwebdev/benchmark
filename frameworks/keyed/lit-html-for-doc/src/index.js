@@ -14,22 +14,18 @@ const add = () => {
   data = data.concat(buildData(1000));
   _render();
 };
-
 const run = () => {
   data = buildData(1000);
   _render();
 };
-
 const runLots = () => {
   data = buildData(10000);
   _render();
 };
-
 const clear = () => {
   data = [];
   _render();
 };
-
 const interact = e => {
   const td = e.target.closest('td');
   const interaction = td.getAttribute('data-interaction');
@@ -40,13 +36,11 @@ const interact = e => {
     select(id);
   }
 };
-
 const del = id => {
   const idx = data.findIndex(d => d.id === id);
   data.splice(idx, 1);
   _render();
 };
-
 const select = id => {
   if (selected > -1) {
     data[selected].selected = false;
@@ -55,7 +49,6 @@ const select = id => {
   data[selected].selected = true;
   _render();
 };
-
 const swapRows = () => {
   if (data.length > 998) {
     const tmp = data[1];
@@ -64,7 +57,6 @@ const swapRows = () => {
   }
   _render();
 };
-
 //#region update
 const update = () => {
   for (let i = 0; i < data.length; i += 10) {
@@ -74,7 +66,6 @@ const update = () => {
   _render();
 };
 //#endregion update
-
 const buildData = count => {
   const data = [];
   for (let i = 0; i < count; i++) {
@@ -86,11 +77,9 @@ const buildData = count => {
   }
   return data;
 };
-
 const _random = max => {
   return Math.round(Math.random() * 1000) % max;
 };
-
 //#region render
 const container = document.getElementById('container');
 const _render = () => {
@@ -119,7 +108,7 @@ const rowTemplate = (item) => html`
 //#endregion row-template
 
 //#region directive
-const allRowsDirective = repeat(
+const allRowsDirective = () => repeat(
   data,
   (item) => item.id,
   (item) => rowTemplate(item)
@@ -129,7 +118,7 @@ const allRowsDirective = repeat(
 // prettier-ignore
 //#region template
 const template = () => html`
-  <div class="container">
+<div class="container">
   <div class="jumbotron">
     <div class="row">
       <div class="col-md-6">
@@ -194,7 +183,7 @@ const template = () => html`
     class="table table-hover table-striped test-data"
   >
     <tbody>
-      ${allRowsDirective}
+      ${allRowsDirective()}
     </tbody>
   </table>
   <span

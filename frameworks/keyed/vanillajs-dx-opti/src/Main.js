@@ -194,7 +194,7 @@ class Main {
     update() {
         this.store.update();
         for (let i=0;i<this.data.length;i+=10) {
-            this.rows[i].childNodes[1].childNodes[0].innerText = this.store.data[i].label;
+            this.rows[i].children[1].children[0].innerText = this.store.data[i].label;
         }
     }
     //#endregion update
@@ -321,8 +321,8 @@ class Main {
     //#region create-row
     createRow(data) {
       const tr = rowTemplate.cloneNode(true);
-      tr.firstChild.textContent = data.id;
-      tr.firstChild.nextSibling.firstChild.textContent = data.label;
+      tr.firstElementChild.textContent = data.id;
+      tr.firstElementChild.nextElementSibling.firstElementChild.textContent = data.label;
       tr.data_id = data.id;
       return tr;
     }
