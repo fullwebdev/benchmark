@@ -233,28 +233,25 @@ class BenchmarkRow extends HTMLTableRowElement {
     this._rowLabel = null;
     this._rowSelected = false;
 
-    const td1 = this._td1 = td("col-md-1");
+    const tds = [ 'col-md-1', 'col-md-4', 'col-md-1', 'col-md-6' ].map(td);
 
-    const td2 = td("col-md-4");
-    const a2 = this._a2 = document.createElement("a");
-    td2.appendChild(a2);
+    const a2 = document.createElement('a');
+    tds[1].appendChild(a2);
 
-    const td3 = td("col-md-1");
-    const a = document.createElement("a");
+    const a3 = document.createElement('a');
+    a3.classList.add('remove');
+    const a3Span = document.createElement('span');
+    a3Span.classList.add('glyphicon', 'glyphicon-remove');
+    a3Span.setAttribute('aria-hidden', 'true');
+    a3.appendChild(a3Span);
+    tds[2].appendChild(a3);
 
-    const span = document.createElement("span");
-    span.className = "glyphicon glyphicon-remove";
-    span.setAttribute("aria-hidden", "true");
+    this._idContainer = tds[0];
+    this._labelContainer = a2;
 
-    a.appendChild(span);
-    td3.appendChild(a);
+    this.append(...tds);
 
-    this.appendChild(td1);
-    this.appendChild(td2);
-    this.appendChild(td3);
-    this.appendChild(td("col-md-6"));
-
-    a.addEventListener("click", (ev) => {
+    a3.addEventListener("click", (ev) => {
       ev.preventDefault();
       this.dispatchEvent(new CustomEvent("benchmark-action", {
         bubbles: true,
@@ -276,7 +273,7 @@ class BenchmarkRow extends HTMLTableRowElement {
   }
 
   set rowId(v) {
-    this._td1.textContent = this._rowId = v;
+    this._idContainer.textContent = this._rowId = v;
   }
 
   get rowLabel() {
@@ -284,7 +281,7 @@ class BenchmarkRow extends HTMLTableRowElement {
   }
 
   set rowLabel(v) {
-    this._a2.textContent = this._rowLabel = v;
+    this._labelContainer.textContent = this._rowLabel = v;
   }
 
   get rowSelected() {
@@ -299,18 +296,17 @@ class BenchmarkRow extends HTMLTableRowElement {
   }
 }
 
+/**
+ * @localvoid:
+ *
+ * There are two ways how to instantiate WebComponents: with a `new` operator and with `document.createElement()`
+ * function. Instantiating WebComponents with a `new` operator has a slightly less overhead (probably because it
+ * doesn't involve a hash map lookup to find a component).
+ *
+ * The main reason why I've used `document.createElement()` here is because it is an idiomatic way to instantiate
+ * components in all popular frameworks that use WebComponents.
+ */
 function createRow(data) {
-  /**
-   * @localvoid:
-   * 
-   * There are two ways how to instantiate WebComponents: with a `new` operator and with `document.createElement()`
-   * function. Instantiating WebComponents with a `new` operator has a slightly less overhead (probably because it
-   * doesn't involve a hash map lookup to find a component).
-   * 
-   * The main reason why I've used `document.createElement()` here is because it is an idiomatic way to instantiate
-   * components in all popular frameworks that use WebComponents.
-   */
-  // const e = new BenchmarkRow();
   const e = document.createElement("tr", { is: "benchmark-row" });
   e.rowId = data.id;
   e.rowLabel = data.label;
