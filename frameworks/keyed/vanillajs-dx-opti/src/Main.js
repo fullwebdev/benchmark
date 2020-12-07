@@ -15,10 +15,12 @@ rowTemplate.innerHTML = `
     <a class="remove">
       <span
         class="remove glyphicon glyphicon-remove"
-        aria-hidden="true"></span>
+        aria-hidden="true"
+      ></span>
     </a>
   </td>
-  <td class="col-md-6"></td>`;
+  <td class="col-md-6"></td>
+`.replace(/\s+(?=<)/g, "");
 //#endregion row-template
 
 class Store {
@@ -320,10 +322,12 @@ class Main {
     }
     //#region create-row
     createRow(data) {
-      const tr = rowTemplate.cloneNode(true);
-      tr.firstElementChild.textContent = data.id;
-      tr.firstElementChild.nextElementSibling.firstElementChild.textContent = data.label;
+      const tr = rowTemplate.cloneNode(true),
+        idElmt = tr.firstChild,
+        lblElmt = idElmt.nextSibling.firstChild;
       tr.data_id = data.id;
+      idElmt.textContent = data.id;
+      lblElmt.textContent = data.label;
       return tr;
     }
     //#endregion create-row
