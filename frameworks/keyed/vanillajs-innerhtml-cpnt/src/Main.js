@@ -177,7 +177,8 @@ class Main {
     update() {
         this.store.update();
         for (let i=0;i<this.data.length;i+=10) {
-            this.rows[i].setLabel(this.store.data[i].label);
+            this.rows[i]
+              .setLabel(this.store.data[i].label);
         }
     }
     //#endregion update
@@ -307,10 +308,15 @@ class Main {
       tr.innerHTML = `
         <td class='col-md-1'>${data.id}</td>
         <td class='col-md-4'>
-            <a class='lbl'>${data.label}</a>
+          <a class='lbl'>${data.label}</a>
         </td>
         <td class='col-md-1'>
-            <a class='remove'><span class='remove glyphicon glyphicon-remove' aria-hidden='true'></span></a>
+          <a class='remove'>
+            <span
+              class='remove glyphicon glyphicon-remove'
+              aria-hidden='true'
+            ></span>
+          </a>
         </td>
         <td class='col-md-6'></td>
       `;

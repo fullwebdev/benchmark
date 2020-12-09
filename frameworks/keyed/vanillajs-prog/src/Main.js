@@ -14,7 +14,12 @@ const el = (type) => (className) => {
 const a = el('a');
 
 const rowTemplate = (() => {
-  const cells = [ 'col-md-1', 'col-md-4', 'col-md-1', 'col-md-6' ].map(el('td'));
+  const cells = [
+    'col-md-1',
+    'col-md-4',
+    'col-md-1',
+    'col-md-6'
+  ].map(el('td'));
 
   cells[1].appendChild(a('lbl'));
 

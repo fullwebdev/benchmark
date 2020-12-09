@@ -175,7 +175,9 @@ class Main {
     update() {
       this.store.update();
       for (let i=0;i<this.data.length;i+=10) {
-        this.tbody.children[i].children[1].children[0].innerText = this.store.data[i].label;
+        this.tbody
+          .children[i].children[1].children[0]
+          .innerText = this.store.data[i].label;
       }
     }
     //#endregion update

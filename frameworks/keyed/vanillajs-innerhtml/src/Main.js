@@ -308,7 +308,12 @@ class Main {
             <a class='lbl'>${data.label}</a>
         </td>
         <td class='col-md-1'>
-            <a class='remove'><span class='remove glyphicon glyphicon-remove' aria-hidden='true'></span></a>
+            <a class='remove'>
+              <span
+                class='remove glyphicon glyphicon-remove'
+                aria-hidden='true'
+              ></span>
+            </a>
         </td>
         <td class='col-md-6'></td>
       `;

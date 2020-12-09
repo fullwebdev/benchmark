@@ -5,21 +5,32 @@ function _random(max) {
 }
 
 //#region template
-const rowTemplate = new Template('tr', { classList: [["danger", part('selected')]]}, [
-  ['td', {classList: 'col-md-1'}, [part('id')]],
-  ['td', {classList: 'col-md-4'}, [
-      ['a', {classList: 'lbl'}, [part('label')]]
-  ]],
-  ['td', {classList: 'col-md-1'}, [
-      ['a', {classList: 'remove'}, [
-          ['span', {
-              classList: 'remove glyphicon glyphicon-remove',
-              attributes: [['aria-hidden', 'true']]
-          }]
+const rowTemplate = new Template(
+  'tr',
+  {
+    classList: [
+      [ "danger", part('selected') ]
+    ]
+  }, [
+    ['td', { classList: 'col-md-1' }, [
+      part('id')
+    ]],
+    ['td', { classList: 'col-md-4' }, [
+      ['a', {classList: 'lbl'}, [
+        part('label')
       ]]
-  ]],
-  ['td', {classList: 'col-md-6'}]
-]);
+    ]],
+    ['td', { classList: 'col-md-1' }, [
+      ['a', { classList: 'remove' }, [
+        ['span', {
+          classList: 'remove glyphicon glyphicon-remove',
+          attributes: [['aria-hidden', 'true']]
+        }]
+      ]]
+    ]],
+    ['td', {classList: 'col-md-6'}]
+  ]
+);
 //#endregion template
 
 class Store {
