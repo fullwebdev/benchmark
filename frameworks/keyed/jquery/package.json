@@ -1,0 +1,32 @@
+{
+  "name": "js-framework-benchmark-jquery",
+  "version": "1.1.0",
+  "description": "JQuery demo",
+  "main": "index.js",
+  "js-framework-benchmark": {
+    "frameworkVersionFromPackage": "jquery",
+    "issues": [
+      772
+    ]
+  },
+  "scripts": {
+    "build-dev": "exit 0",
+    "build-prod": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krausest/js-framework-benchmark.git"
+  },
+  "keywords": [
+    "jquery"
+  ],
+  "author": "Noël Macé",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/krausest/js-framework-benchmark/issues"
+  },
+  "homepage": "https://github.com/krausest/js-framework-benchmark#readme",
+  "dependencies": {
+    "jquery": "3.5.1"
+  }
+}
