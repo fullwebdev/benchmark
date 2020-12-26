@@ -1,5 +1,5 @@
 {
-  "name": "choo-v6.5.0",
+  "name": "choo-v7.1.0",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -17,7 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "browserify": "16.2.2",
-    "choo": "6.13.0",
+    "choo": "^7.1.0",
     "cross-env": "5.2.0",
     "envify": "4.1.0",
     "es2020": "1.1.9",
