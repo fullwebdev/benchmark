@@ -5,7 +5,9 @@
   "main": "index.js",
   "js-framework-benchmark": {
     "frameworkVersionFromPackage": "lit-html",
-    "issues": [800]
+    "issues": [
+      800
+    ]
   },
   "scripts": {
     "build-dev": "rollup -c -w",
@@ -25,7 +27,7 @@
   },
   "homepage": "https://github.com/krausest/js-framework-benchmark#readme",
   "dependencies": {
-    "lit-html": "1.1.0"
+    "lit-html": "1.3.0"
   },
   "devDependencies": {
     "rollup": "1.12.3",
