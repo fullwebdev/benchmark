@@ -25,7 +25,7 @@
   "homepage": "https://github.com/krausest/js-framework-benchmark#readme",
   "dependencies": {
     "js-framework-benchmark-utils": "0.2.5",
-    "uhtml": "1.8.1"
+    "uhtml": "2.1.4"
   },
   "devDependencies": {
     "@ungap/degap": "^0.1.7",
