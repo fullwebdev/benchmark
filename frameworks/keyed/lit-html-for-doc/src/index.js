@@ -26,6 +26,8 @@ const clear = () => {
   data = [];
   _render();
 };
+
+//#region interact
 const interact = e => {
   const td = e.target.closest('td');
   const interaction = td.getAttribute('data-interaction');
@@ -36,6 +38,9 @@ const interact = e => {
     select(id);
   }
 };
+//#endregion interact
+
+//#region update
 const del = id => {
   const idx = data.findIndex(d => d.id === id);
   data.splice(idx, 1);
@@ -57,7 +62,6 @@ const swapRows = () => {
   }
   _render();
 };
-//#region update
 const update = () => {
   for (let i = 0; i < data.length; i += 10) {
     const item = data[i];
