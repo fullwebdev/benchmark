@@ -1,16 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import {Provider} from 'react-redux'
-import { createStore } from 'redux'
-import { reducer } from './reducer';
+/**
+ * This is the entry file of the Direflow setup.
+ *
+ * You can add any additional functionality here.
+ * For example, this is a good place to hook into your
+ * Web Component once it's mounted on the DOM.
+ *
+ * !This file cannot be removed.
+ * It can be left blank if not needed.
+ */
 
-const store = createStore(reducer)
+import BenchmarkTable from './direflow-components/benchmark-table';
 
-ReactDOM.render(
-    <Provider store={store}>
-      <App/>
-  </Provider>,
-  document.getElementById('root')
-);
+BenchmarkTable.then((element) => {
 
+  /**
+   * Access DOM node when it's mounted
+   */
+  console.log('benchmark-table is mounted on the DOM', element);
+});
